@@ -16,6 +16,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     unregister_code(KC_LCMD);
                 }
                 wasNewKeySet = true;
+		break;
             case KC_RCTL:
                 if(record->event.pressed) {
                     register_code(KC_RCMD);
@@ -24,7 +25,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     unregister_code(KC_RCMD);
                 }
                 wasNewKeySet = true;
-
+		break;
             // Map windows alt to macos option
             case KC_LALT:
                 if(record->event.pressed) {
@@ -34,6 +35,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     unregister_code(KC_LOPT);
                 }
                 wasNewKeySet = true;
+		break;
             case KC_RALT:
                 if(record->event.pressed) {
                     register_code(KC_ROPT);
@@ -42,7 +44,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     unregister_code(KC_ROPT);
                 }
                 wasNewKeySet = true;
-
+		break;
                 // Map windows key to macos ctrl
             case KC_LGUI:
                 if(record->event.pressed) {
@@ -52,6 +54,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     unregister_code(KC_LCTL);
                 }
                 wasNewKeySet = true;
+		break;
             case KC_RGUI:
                 if(record->event.pressed) {
                     register_code(KC_RCTL);
@@ -60,6 +63,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     unregister_code(KC_RCTL);
                 }
                 wasNewKeySet = true;
+		break;
             default:
                 return false;
         }
