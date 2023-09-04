@@ -1,6 +1,7 @@
 # Software features
 
-ENCODER_ENABLE = yes 
+SPLIT_KEYBOARD      = yes
+ENCODER_ENABLE      = yes 
 OS_DETECTION_ENABLE = yes
 
 # Files to compile
