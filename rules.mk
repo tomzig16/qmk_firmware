@@ -8,3 +8,5 @@ OS_DETECTION_ENABLE = yes
 SRC += source.c
 SRC += features/keyswapper.c
 SRC += features/custom_key_handler.c
+
+INTROSPECTION_KEYMAP_C = features/custom_key_handler.c
