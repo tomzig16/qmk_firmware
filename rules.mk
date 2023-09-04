@@ -1,4 +1,3 @@
-
 # Software features
 
 ENCODER_ENABLE = yes 

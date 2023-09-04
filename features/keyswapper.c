@@ -1,12 +1,9 @@
 #include "keyswapper.h"
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    bool wasNewKeySet = false;
-    if(detected_host_os() == OS_MACOS) {
-        switch (keycode)
-        {
-            // https://docs.qmk.fm/#/keycodes_basic?id=commands
-
+bool old_process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (detected_host_os()) {
+        case OS_MACOS:
+        switch(keycode) {
             // Map windows ctrl to macos cmd
             case KC_LCTL:
                 if(record->event.pressed) {
@@ -15,8 +12,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 else {
                     unregister_code(KC_LCMD);
                 }
-                wasNewKeySet = true;
-		break;
+		        break;
             case KC_RCTL:
                 if(record->event.pressed) {
                     register_code(KC_RCMD);
@@ -24,8 +20,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 else {
                     unregister_code(KC_RCMD);
                 }
-                wasNewKeySet = true;
-		break;
+		        break;
             // Map windows alt to macos option
             case KC_LALT:
                 if(record->event.pressed) {
@@ -34,8 +29,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 else {
                     unregister_code(KC_LOPT);
                 }
-                wasNewKeySet = true;
-		break;
+		        break;
             case KC_RALT:
                 if(record->event.pressed) {
                     register_code(KC_ROPT);
@@ -43,9 +37,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 else {
                     unregister_code(KC_ROPT);
                 }
-                wasNewKeySet = true;
-		break;
-                // Map windows key to macos ctrl
+		        break;
+            // Map windows key to macos ctrl
             case KC_LGUI:
                 if(record->event.pressed) {
                     register_code(KC_LCTL);
@@ -53,8 +46,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 else {
                     unregister_code(KC_LCTL);
                 }
-                wasNewKeySet = true;
-		break;
+		        break;
             case KC_RGUI:
                 if(record->event.pressed) {
                     register_code(KC_RCTL);
@@ -62,11 +54,83 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 else {
                     unregister_code(KC_RCTL);
                 }
-                wasNewKeySet = true;
-		break;
-            default:
-                return false;
+                break;
         }
+        break;
+    
+    default:
+        break;
     }
-    return wasNewKeySet;
+
 }
+
+// bool old_process_record_user(uint16_t keycode, keyrecord_t *record) {
+//     bool wasNewKeySet = false;
+//     if(detected_host_os() == OS_MACOS) {
+//         switch (keycode)
+//         {
+//             // https://docs.qmk.fm/#/keycodes_basic?id=commands
+
+            
+//             case KC_LCTL:
+//                 if(record->event.pressed) {
+//                     register_code(KC_LCMD);
+//                 }
+//                 else {
+//                     unregister_code(KC_LCMD);
+//                 }
+//                 wasNewKeySet = true;
+// 		break;
+//             case KC_RCTL:
+//                 if(record->event.pressed) {
+//                     register_code(KC_RCMD);
+//                 }
+//                 else {
+//                     unregister_code(KC_RCMD);
+//                 }
+//                 wasNewKeySet = true;
+// 		break;
+//             // Map windows alt to macos option
+//             case KC_LALT:
+//                 if(record->event.pressed) {
+//                     register_code(KC_LOPT);
+//                 }
+//                 else {
+//                     unregister_code(KC_LOPT);
+//                 }
+//                 wasNewKeySet = true;
+// 		break;
+//             case KC_RALT:
+//                 if(record->event.pressed) {
+//                     register_code(KC_ROPT);
+//                 }
+//                 else {
+//                     unregister_code(KC_ROPT);
+//                 }
+//                 wasNewKeySet = true;
+// 		break;
+//                 // Map windows key to macos ctrl
+//             case KC_LGUI:
+//                 if(record->event.pressed) {
+//                     register_code(KC_LCTL);
+//                 }
+//                 else {
+//                     unregister_code(KC_LCTL);
+//                 }
+//                 wasNewKeySet = true;
+// 		break;
+//             case KC_RGUI:
+//                 if(record->event.pressed) {
+//                     register_code(KC_RCTL);
+//                 }
+//                 else {
+//                     unregister_code(KC_RCTL);
+//                 }
+//                 wasNewKeySet = true;
+// 		break;
+//             default:
+//                 return false;
+//         }
+//     }
+//     return wasNewKeySet;
+// }
